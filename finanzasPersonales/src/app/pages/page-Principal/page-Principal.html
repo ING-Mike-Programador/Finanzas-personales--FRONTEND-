@@ -1,10 +1,64 @@
-<button class="btn bg-accent" onclick="my_modal_2.showModal()">open modal</button>
-<dialog id="my_modal_2" class="modal">
-  <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click outside to close</p>
+<div class="grid grid-cols-2 gap-6 h-screen p-6">
+  <!-- Izquierda: Resumen Mensual -->
+  <div class="overflow-auto">
+    <h2 class="text-xl font-bold mb-2">Resumen Mensual: {{ months[month()] }}-{{ year() }}</h2>
+    <table class="w-full text-center border border-gray-300">
+      <thead class="bg-blue-600 text-white">
+        <tr>
+          <th>Fecha</th>
+          <th>Ganancias</th>
+          <th>Gastos</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 31 filas -->
+
+      </tbody>
+    </table>
   </div>
-  <form method="dialog" class="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
+
+  <!-- Derecha: Movimientos y Cuentas -->
+  <div class="flex flex-col gap-6">
+    <!-- Movimientos -->
+    <div class="flex">
+      <div class="flex-1 overflow-hidden">
+        <h2 class="text-xl font-bold mb-2">Movimientos Recientes</h2>
+        <table class="w-full text-center border border-gray-300">
+          <thead class="bg-green-600 text-white">
+            <tr>
+              <th>Fecha</th>
+              <th>Movimiento</th>
+              <th>Descripción</th>
+              <th>Medio</th>
+              <th>$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- filas -->
+          </tbody>
+        </table>
+      </div>
+      <button class="ml-4 bg-green-500 text-white px-4 py-2 rounded">Agregar</button>
+    </div>
+
+    <!-- Cuentas y Fondos -->
+    <div class="flex">
+      <div class="flex-1">
+        <h2 class="text-xl font-bold mb-2">Cuentas y Fondos</h2>
+        <table class="w-full text-center border border-gray-300">
+          <thead class="bg-purple-600 text-white">
+            <tr>
+              <th>Fuente</th>
+              <th>$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- filas -->
+          </tbody>
+        </table>
+      </div>
+      <button class="ml-4 bg-purple-500 text-white px-4 py-2 rounded">Agregar</button>
+    </div>
+  </div>
+</div>
