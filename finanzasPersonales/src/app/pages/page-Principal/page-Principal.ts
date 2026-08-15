@@ -1,22 +1,23 @@
 import { Component, signal } from '@angular/core';
+import { CurrencyPipe, DatePipe, NgClass, UpperCasePipe } from '@angular/common';
 import { InterfaceTableMonthInfo } from './../../interfaces/interface-table-MonthInfo';
-import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { MapeoTableMonthInfo } from '../../interfaces/InterfaceMap/Mapeo-table-MonthInfoDate';
 
 @Component({
   selector: 'app-page-principal',
-  imports: [CurrencyPipe, DatePipe, NgClass],
+  imports: [CurrencyPipe, DatePipe, NgClass, UpperCasePipe],
   templateUrl: './page-Principal.html',
 })
 export default class PagePrincipal {
   mapeoFecha = new MapeoTableMonthInfo();
 
-  month = signal(new Date().getMonth()); // agosto (los meses van de 0 a 11)
-  year = signal(new Date().getFullYear());
-  daysInMonth = signal(new Date(this.year(), this.month() + 1, 0).getDate());
+  month = signal(new Date().getMonth()); // Mes actual (0-11)
+  year = signal(new Date().getFullYear()); // Año actual
+  daysInMonth = signal(new Date(this.year(), this.month() + 1, 0).getDate()); // Número de días en el mes actual
 
-  dayActual = signal(new Date());
+  dayActual = signal(new Date()); // Fecha actual
 
+  // Array de nombres de los meses en español
   months = [
     'Enero',
     'Febrero',
@@ -32,6 +33,7 @@ export default class PagePrincipal {
     'Diciembre',
   ];
 
+  // Datos probinales para el mes de agosto de 2026
   monthInfo = signal<InterfaceTableMonthInfo[]>([
     {
       date: this.mapeoFecha.createDateFromString('01-08-2026'),
@@ -118,6 +120,8 @@ export default class PagePrincipal {
       total: 1750,
     },
   ]);
+
+  // Metodo para obtener los datos del mes, rellenando los días faltantes con valores predeterminados
   obtnrData(): InterfaceTableMonthInfo[] {
     for (let i = this.monthInfo().length; i < this.daysInMonth(); i++) {
       this.monthInfo().push({

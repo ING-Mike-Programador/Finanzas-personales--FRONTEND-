@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-screen p-6">
   <!-- Izquierda: Resumen Mensual -->
   <div class="overflow-auto order-3 md:order-1">
-    <h2 class="text-xl font-bold mb-2">Resumen Mensual: {{ months[month()] }}-{{ year() }}</h2>
+    <h2 class="text-xl font-bold mb-2">Resumen Mensual: {{ dayActual() | date: 'MMMM-yyyy' | uppercase}}</h2>
     <table class="w-full text-center border border-gray-300">
       <thead class="bg-blue-600 text-white">
         <tr>
@@ -21,6 +21,8 @@
                 : ''
             "
           >
+      <!-- Agregar la clase 'bg-info text-black' si la fecha es igual a la fecha actual
+       Utilizacion de Pipes para una mejor visualización del contenido -->
             <td>{{ item.date | date: 'dd/MM/yyyy' }}</td>
             <td>{{ item.income | currency: 'MXN' }}</td>
             <td>{{ item.expenses | currency: 'MXN' }}</td>
