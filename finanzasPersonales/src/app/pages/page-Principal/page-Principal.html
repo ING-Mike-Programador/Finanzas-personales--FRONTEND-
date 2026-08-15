@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2 gap-6 h-screen p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-screen p-6">
   <!-- Izquierda: Resumen Mensual -->
-  <div class="overflow-auto">
+  <div class="overflow-auto order-3 md:order-1">
     <h2 class="text-xl font-bold mb-2">Resumen Mensual: {{ months[month()] }}-{{ year() }}</h2>
     <table class="w-full text-center border border-gray-300">
       <thead class="bg-blue-600 text-white">
@@ -13,15 +13,29 @@
       </thead>
       <tbody>
         <!-- 31 filas -->
+        @for (item of obtnrData(); track item) {
+          <tr
+            [ngClass]="
+              (dayActual() | date: 'dd/MM/yyyy') === (item.date | date: 'dd/MM/yyyy')
+                ? 'bg-info text-black'
+                : ''
+            "
+          >
+            <td>{{ item.date | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.income | currency: 'MXN' }}</td>
+            <td>{{ item.expenses | currency: 'MXN' }}</td>
+            <td>{{ item.total | currency: 'MXN' }}</td>
+          </tr>
+        }
 
       </tbody>
     </table>
   </div>
 
   <!-- Derecha: Movimientos y Cuentas -->
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 order-2 md:order-2">
     <!-- Movimientos -->
-    <div class="flex">
+    <div class="flex order-1 md:order-1">
       <div class="flex-1 overflow-hidden">
         <h2 class="text-xl font-bold mb-2">Movimientos Recientes</h2>
         <table class="w-full text-center border border-gray-300">
@@ -43,7 +57,7 @@
     </div>
 
     <!-- Cuentas y Fondos -->
-    <div class="flex">
+    <div class="order-0 md:order-2">
       <div class="flex-1">
         <h2 class="text-xl font-bold mb-2">Cuentas y Fondos</h2>
         <table class="w-full text-center border border-gray-300">
@@ -58,7 +72,7 @@
           </tbody>
         </table>
       </div>
-      <button class="ml-4 bg-purple-500 text-white px-4 py-2 rounded">Agregar</button>
+      <button class="mt-4 bg-purple-500 text-white px-4 py-2 rounded">Agregar</button>
     </div>
   </div>
 </div>
