@@ -1,0 +1,29 @@
+<h2 class="text-xl font-bold mb-2">Resumen Mensual: {{ months[month()] }}-{{ year() }}</h2>
+<table class="w-full text-center border border-gray-300">
+  <thead class="bg-blue-600 text-white">
+    <tr>
+      <th>Fecha</th>
+      <th>Ganancias</th>
+      <th>Gastos</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 31 filas -->
+    @for (item of obtnrData(); track item) {
+      <!-- Resaltar la fila si la fecha coincide con el día actual -->
+      <tr
+        [ngClass]="
+          (dayActual() | date: 'dd/MM/yyyy') === (item.date | date: 'dd/MM/yyyy')
+            ? 'bg-info text-black'
+            : ''
+        "
+      >
+        <td>{{ item.date | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ item.income | currency: 'MXN' }}</td>
+        <td>{{ item.expenses | currency: 'MXN' }}</td>
+        <td>{{ item.total | currency: 'MXN' }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
