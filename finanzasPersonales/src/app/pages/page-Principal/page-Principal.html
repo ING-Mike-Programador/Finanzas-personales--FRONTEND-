@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-screen p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:h-120 p-6">
   <!-- Izquierda: Resumen Mensual -->
   <div class="overflow-auto order-3 md:order-1">
     <!-- Tabla del resumen Mensual -->
@@ -9,10 +9,10 @@
   <div class="flex flex-col gap-6 order-2 md:order-2">
     <!-- Movimientos -->
     <div class="flex order-1 md:order-1">
-      <div class="flex-1 overflow-hidden">
-        <h2 class="text-xl font-bold mb-2">Movimientos Recientes</h2>
-        <table class="w-full text-center border border-gray-300">
-          <thead class="bg-green-600 text-white">
+      <div class="flex-1 overflow-hidden md:h-60">
+        <h2 class="text-xl font-bold mb-2">Movimientos : {{ months[month()] }}-{{ year() }}</h2>
+        <table class="w-full text-center border">
+          <thead class="bg-green-600 border-2 border-green-700 text-white">
             <tr>
               <th>Fecha</th>
               <th>Movimiento</th>
@@ -23,16 +23,17 @@
           </thead>
           <tbody>
             <!-- filas -->
+            <tr>
+              <td class="border">sadsdas</td>
+              <td class="border">12151</td>
+              <td class="border">ssssssssssssss</td>
+              <td class="border">12151</td>
+              <td class="border">sadsdas</td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <button
-        class="btn ml-4 bg-green-500 text-white px-4 rounded"
-        onclick="modalAggData.showModal()"
-      >
-        Agregar
-      </button>
-      <!-- Open the modal using ID.showModal() method -->
+      <!-- Abrir modal usando ID.showModal() method -->
       <dialog id="modalAggData" class="modal">
         <div class="modal-box">
           <modal-agg-data-movimiento />
@@ -53,24 +54,57 @@
         </form>
       </dialog>
     </div>
-
+    <button
+      class="btn border-green-500 bg-green-400 focus:border-green-800 focus:ring-green-800 mt-0.5 w-30 px-4 rounded-md flex order-1 md:order-1"
+      onclick="modalAggData.showModal()"
+    >
+      Agregar
+    </button>
     <!-- Cuentas y Fondos -->
     <div class="order-0 md:order-2">
-      <div class="flex-1">
+      <div class="flex-1 md:h-60">
         <h2 class="text-xl font-bold mb-2">Cuentas y Fondos</h2>
-        <table class="w-full text-center border border-gray-300">
-          <thead class="bg-purple-600 text-white">
+        <table class="w-100 text-center border-2 border-purple-700">
+          <thead class="bg-purple-500 border-2 border-purple-700 text-white">
             <tr>
-              <th>Fuente</th>
-              <th>$</th>
+              <th class="border w-60">Fuente</th>
+              <th class="border w-40 bg-white text-black">$</th>
             </tr>
           </thead>
           <tbody>
-            <!-- filas -->
+            <tr>
+              <td class="border">sadsdas</td>
+              <td class="border">12151</td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <button class="mt-4 bg-purple-500 text-white px-4 py-2 rounded">Agregar</button>
+      <!-- Abrir modal usando ID.showModal() method -->
+      <dialog id="modalAggFuenteMon" class="modal">
+        <div class="modal-box">
+          <modal-agg-fuente-monetario />
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- Al dar click se cerrara el modal y guardara los datos -->
+              <button class="btn bg-primary rounded-2xl border-info">Guardar</button>
+            </form>
+            <form method="dialog">
+              <!-- Al dar click se cerrara el mismo -->
+              <button class="btn bg-warning rounded-2xl border-error">Close</button>
+            </form>
+          </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <!-- Al dar click fuera del modal cerrara el modal -->
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
+    <button
+      class="btn border-purple-700 bg-purple-500 focus:purple-green-800 focus:ring-purple-950 text-white mt-0.5 w-30 px-4 rounded-md flex order-0 md:order-2"
+      onclick="modalAggFuenteMon.showModal()"
+    >
+      Agregar
+    </button>
   </div>
 </div>

@@ -1,5 +1,7 @@
 <h2 class="text-xl font-bold mb-2">Resumen Mensual: {{ months[month()] }}-{{ year() }}</h2>
-<table class="w-full text-center border border-gray-300">
+
+<div class="border-2 border-info rounded-md">
+<table class="w-full text-center border-2 border-info">
   <thead class="bg-blue-600 text-white">
     <tr>
       <th>Fecha</th>
@@ -15,7 +17,7 @@
       <tr
         [ngClass]="
           (dayActual() | date: 'dd/MM/yyyy') === (item.date | date: 'dd/MM/yyyy')
-            ? 'bg-info text-black'
+            ? 'bg-primary border-2 border-info rounded-md text-black'
             : ''
         "
       >
@@ -27,3 +29,4 @@
     }
   </tbody>
 </table>
+</div>
