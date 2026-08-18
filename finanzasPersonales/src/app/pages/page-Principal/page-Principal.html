@@ -26,7 +26,32 @@
           </tbody>
         </table>
       </div>
-      <button class="ml-4 bg-green-500 text-white px-4 py-2 rounded">Agregar</button>
+      <button
+        class="btn ml-4 bg-green-500 text-white px-4 rounded"
+        onclick="modalAggData.showModal()"
+      >
+        Agregar
+      </button>
+      <!-- Open the modal using ID.showModal() method -->
+      <dialog id="modalAggData" class="modal">
+        <div class="modal-box">
+          <modal-agg-data-movimiento />
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- Al dar click se cerrara el modal y guardara los datos -->
+              <button class="btn bg-primary rounded-2xl border-info">Guardar</button>
+            </form>
+            <form method="dialog">
+              <!-- Al dar click se cerrara el mismo -->
+              <button class="btn bg-warning rounded-2xl border-error">Close</button>
+            </form>
+          </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <!-- Al dar click fuera del modal cerrara el modal -->
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
 
     <!-- Cuentas y Fondos -->

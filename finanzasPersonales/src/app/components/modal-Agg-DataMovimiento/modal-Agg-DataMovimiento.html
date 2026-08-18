@@ -1,0 +1,49 @@
+<!-- Fecha del movimiento -->
+<h1 class="text-xl font-bold">Fecha:</h1>
+<input
+  type="date"
+  class="input rounded-md input-info px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 w-40"
+/>
+
+<!-- Movimiento (Ingreso / Gasto) -->
+<h1 class="text-xl font-bold mt-1">Tipo del movimiento:</h1>
+
+<select
+  id="pais"
+  class="block font-bold bg-info text-white rounded-md px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 mt-0.5 w-auto"
+>
+  <option value="" disabled selected>Selecciona una opción....</option>
+  <option value="ing">ingreso</option>
+  <option value="gas">gasto</option>
+</select>
+
+<!-- Descripción (Opcional) -->
+<h1 class="text-xl font-bold mt-1">Descripción:</h1>
+<textarea
+  class="textarea textarea-info rounded-md px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 mt-0.5"
+  placeholder="Agregar descripción del movimiento"
+></textarea>
+
+
+<!-- Fuente (Bolsillo / Cuenta bancaria / etc...) -->
+<h1 class="text-xl font-bold mt-1">Fuente:</h1>
+<select
+  id="pais"
+  class="block font-bold bg-info text-white rounded-md px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 mt-0.5 w-auto"
+>
+  <option value="" disabled selected>Selecciona una opción....</option>
+  <option value="ing">Bolsillo</option>
+  <option value="gas">Cuenta Bancaria</option>
+</select>
+
+<!-- Dinero utilizado en el movimiento-->
+<h1 class="text-xl font-bold mt-1">Dinero:</h1>
+<input
+  type="number"
+  step="0.01"
+  class="input validator rounded-md input-info px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 w-40"
+  required
+  placeholder="$"
+  title="valorMonetario"
+/>
+<p class="validator-hint">Escribe valor monetario</p>
